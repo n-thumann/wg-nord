@@ -1,0 +1,17 @@
+[package]
+name = "wg-nord"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.5.4", features = ["derive", "env"] }
+ipnet = "2.9.0"
+reqwest = { version = "0.12.4", features = ["blocking", "json", "native-tls-vendored"] }
+rust-ini = "0.21.0"
+serde = { version = "1.0.203", features = ["derive"] }
+
+[profile.release]
+strip = true
+opt-level = "z"
+lto = true
+codegen-units = 1
