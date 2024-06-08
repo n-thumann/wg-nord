@@ -1,0 +1,51 @@
+name: "Build wg-nord"
+description: "Install dependencies and build it"
+inputs:
+  target:
+    description: "The build target"
+    required: true
+  use-cross:
+    description: "Use cross to build"
+    default: true
+  profile:
+    description: "The profile to build wg-nord in"
+    required: false
+    default: "dev"
+runs:
+  using: "composite"
+  steps:
+    - name: Prepare variables
+      run: |
+        echo "cargo_or_cross=${{ inputs.use-cross != 'false' && 'cross' || 'cargo' }}" >> $GITHUB_ENV
+        echo "binary_directory=target/${{ inputs.target }}/${{ inputs.profile == 'dev' && 'debug' || 'release' }}" >> $GITHUB_ENV
+        echo "binary_name=wg-nord${{ contains(inputs.target, 'windows') && '.exe' || '' }}" >> $GITHUB_ENV
+        version=$(cargo metadata --format-version 1 --no-deps | jq -r '.packages[] | select(.name == "wg-nord") | .version')
+        echo "tarball_name=wg-nord-$version-${{ inputs.target }}.tar.gz" >> $GITHUB_ENV
+      shell: bash
+    - uses: Swatinem/rust-cache@23bce251a8cd2ffc3c1075eaa2367cf899916d84
+      with:
+        key: ${{ inputs.target }}
+    - name: Install Rust toolchain for ${{ inputs.target }}
+      if: ${{ inputs.use-cross == 'false' }}
+      run: |
+        rustup update stable
+        rustup default stable
+        rustup target add ${{ inputs.target }}
+      shell: bash
+    - name: Install cross
+      if: ${{ inputs.use-cross != 'false' }}
+      run: cargo install cross --git https://github.com/cross-rs/cross
+      shell: bash
+    - name: Build
+      env:
+        CROSS_NO_WARNINGS: 0
+      run: ${{ env.cargo_or_cross }} build --verbose --locked --target ${{ inputs.target }} --profile ${{ inputs.profile }}
+      shell: bash
+    - name: Compress binary
+      run: tar -czvf ${{ env.tarball_name }} --directory ${{ env.binary_directory }} ${{ env.binary_name }}
+      shell: bash
+    - uses: actions/upload-artifact@v4
+      with:
+        path: ${{ env.tarball_name }}
+        name: ${{ env.tarball_name }}
+        if-no-files-found: error
