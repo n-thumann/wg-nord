@@ -10,7 +10,7 @@ pub mod config;
 mod filter;
 mod nordvpn;
 
-/// Create a WireGuard configuration file for NordVPN
+/// Command-line tool for generating WireGuard configuration files for NordVPN
 #[derive(Parser)]
 #[command(version)]
 struct Cli {
