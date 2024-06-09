@@ -1,7 +1,12 @@
 [package]
 name = "wg-nord"
 version = "0.1.0"
+authors = ["Nicolas Thumann <me@n-thumann.de>"]
 edition = "2021"
+description = "Command-line tool to create Wireguard configuration files for NordVPN"
+readme = "README.md"
+repository = "https://github.com/n-thumann/wg-nord"
+license = "MIT"
 
 [dependencies]
 clap = { version = "4.5.4", features = ["derive", "env"] }

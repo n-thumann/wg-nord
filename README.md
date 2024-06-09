@@ -1,5 +1,7 @@
 # wg-nord
 
+Command-line tool to create Wireguard configuration files for NordVPN
+
 ```
 # wg-nord --server us9591.nordvpn.com --token 818f804a2c24e89082a37d1486ac45b83f9452ea9b953678c7e115f354f96463
 [Interface]
@@ -15,17 +17,20 @@ PersistentKeepalive = 25
 ```
 
 ## Installation
+
 You can either
 1. Install via `cargo install wg-nord --git https://github.com/n-thumann/wg-nord/`
 2. Download a precompiled binary of the [latest release](https://github.com/n-thumann/wg-nord/releases/latest)
 
 ## Usage
+
 1. Pick a server from https://nordvpn.com/servers/tools/. Make sure that is supports WireGuard.
 2. Obtain a token from the NordVPN (see https://support.nordvpn.com/hc/en-us/articles/20286980309265-How-to-use-a-token-with-NordVPN-on-Linux).
 3. Run `wg-nord config <server> <token>`
 4. Copy & paste the output into your WireGuard client
 
 ## Building
+
 1. Install [Rust](https://www.rust-lang.org/)
 2. Run `cargo build`
 3. Done
