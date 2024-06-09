@@ -1,6 +1,6 @@
 # wg-nord
 
-Command-line tool to create Wireguard configuration files for NordVPN
+Command-line tool for generating WireGuard configuration files for NordVPN
 
 ```
 # wg-nord --server us9591.nordvpn.com --token 818f804a2c24e89082a37d1486ac45b83f9452ea9b953678c7e115f354f96463
