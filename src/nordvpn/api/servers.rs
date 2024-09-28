@@ -5,7 +5,6 @@ use serde::Deserialize;
 #[derive(Deserialize)]
 pub struct IP {
     pub ip: IpAddr,
-    pub version: u64,
 }
 
 #[derive(Deserialize)]
