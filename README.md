@@ -77,7 +77,7 @@ Options:
 
 - Specifying IPv6 DNS servers or allowed IPs on NordVPN server without IPv6 support will be ignored
     ```
-    wg-nord --dns-servers 1.1.1.1 --dns-servers 2606:4700:4700::1111 --allowed-ips 1.0.0.0/24 --allowed-ips 2606:4700::/36 --server us9590.nordvpn.com --token 818f804a2c24e89082a37d1486ac45b83f9452ea9b953678c7e115f354f96463
+    # wg-nord --dns-servers 1.1.1.1 --dns-servers 2606:4700:4700::1111 --allowed-ips 1.0.0.0/24 --allowed-ips 2606:4700::/36 --server us9590.nordvpn.com --token 818f804a2c24e89082a37d1486ac45b83f9452ea9b953678c7e115f354f96463
     [Interface]
     PrivateKey = IDQu32ovMxFQ3VSywgKTUBFGs/CN/S3ouWAmV6nsc1M=
     Address = 10.5.0.2
