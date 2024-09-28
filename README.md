@@ -96,4 +96,4 @@ Install [Rust](https://www.rust-lang.org/) and run `cargo build`.
 
 ## Background
 NordLynx by NordVPN is based on WireGuard, but there's no official way to download a WireGuard configuration file directly, like with OpenVPN. WireGuard is only supported by using NordVPN's official apps. Therefore, I dug through the [code](https://github.com/NordSecurity/nordvpn-linux) of the NordVPN Linux client to figure out how their WireGuard configuration is created.
-Compared to the official Linux client, wg-nord even supports IPv6 by default (enabled on `us9591.nordvpn.com` and `us9592.nordvpn.com` at the time of writing).
+Compared to the official Linux client, wg-nord even supports IPv6 by default (enabled on `nl715.nordvpn.com`, `us9591.nordvpn.com` and `us9592.nordvpn.com` at the time of writing).
