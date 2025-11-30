@@ -14,8 +14,8 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: Swatinem/rust-cache@23bce251a8cd2ffc3c1075eaa2367cf899916d84
+      - uses: actions/checkout@v6
+      - uses: Swatinem/rust-cache@779680da715d629ac1d338a641029a2f4372abb5
       - name: Format
         run: cargo fmt --check
       - name: Clippy
@@ -24,8 +24,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: Swatinem/rust-cache@23bce251a8cd2ffc3c1075eaa2367cf899916d84
+      - uses: actions/checkout@v6
+      - uses: Swatinem/rust-cache@779680da715d629ac1d338a641029a2f4372abb5
       - name: Run tests
         run: cargo test --verbose --locked
 
@@ -49,7 +49,7 @@ jobs:
           - target: x86_64-pc-windows-gnu
             host: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Build
         uses: ./.github/actions/build
         with:
