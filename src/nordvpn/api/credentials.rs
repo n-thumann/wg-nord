@@ -22,7 +22,7 @@ pub fn get(token: String) -> Result<Credentials, Box<dyn std::error::Error>> {
     let client = reqwest::blocking::Client::new();
     let body: Credentials = client
         .get("https://api.nordvpn.com/v1/users/services/credentials")
-        .header("Authorization", format!("token:{}", token))
+        .header("Authorization", format!("Bearer token:{}", token))
         .send()?
         .json()?;
 
