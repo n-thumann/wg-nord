@@ -1,6 +1,6 @@
 [package]
 name = "wg-nord"
-version = "1.0.0"
+version = "1.0.1"
 authors = ["Nicolas Thumann <me@n-thumann.de>"]
 edition = "2021"
 description = "Command-line tool for generating WireGuard configuration files for NordVPN"
