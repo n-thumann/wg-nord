@@ -22,7 +22,7 @@ runs:
         version=$(cargo metadata --format-version 1 --no-deps | jq -r '.packages[] | select(.name == "wg-nord") | .version')
         echo "tarball_name=wg-nord-$version-${{ inputs.target }}.tar.gz" >> $GITHUB_ENV
       shell: bash
-    - uses: Swatinem/rust-cache@23bce251a8cd2ffc3c1075eaa2367cf899916d84
+    - uses: Swatinem/rust-cache@779680da715d629ac1d338a641029a2f4372abb5
       with:
         key: ${{ inputs.target }}
     - name: Install Rust toolchain for ${{ inputs.target }}
@@ -44,7 +44,7 @@ runs:
     - name: Compress binary
       run: tar -czvf ${{ env.tarball_name }} --directory ${{ env.binary_directory }} ${{ env.binary_name }}
       shell: bash
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v5
       with:
         path: ${{ env.tarball_name }}
         name: ${{ env.tarball_name }}

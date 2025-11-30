@@ -24,7 +24,7 @@ jobs:
             host: ubuntu-latest
     runs-on: ${{ matrix.host }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Build
         uses: ./.github/actions/build
         with:
@@ -40,8 +40,8 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/checkout@v6
+      - uses: actions/download-artifact@v6
         id: download-artifacts
         with:
           path: artifacts/
