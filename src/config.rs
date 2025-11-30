@@ -18,11 +18,10 @@ pub struct Config {
 }
 
 fn join_with_comma<T: ToString>(ips: &[T]) -> String {
-    return ips
-        .iter()
+    ips.iter()
         .map(|ip| ip.to_string())
         .collect::<Vec<String>>()
-        .join(", ");
+        .join(", ")
 }
 
 impl fmt::Display for Config {
