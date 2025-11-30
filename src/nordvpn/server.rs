@@ -11,7 +11,7 @@ pub struct Server {
 
 impl Server {
     pub fn supports_ipv6(&self) -> bool {
-        return self.ip_addresses.iter().any(IpAddr::is_ipv6);
+        self.ip_addresses.iter().any(IpAddr::is_ipv6)
     }
 
     pub fn endpoint(&self) -> String {
